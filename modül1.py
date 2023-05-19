@@ -48,11 +48,11 @@ class Magaza:
 
     def __str__(self):
         s = "\n************************************\n"
-        s += f"{self.__magaza_adi} mağazası için satıcı {self.__satici_adi}:\n"
+        s += f"{self.__magaza_adi} maÃ°azasÃ½ iÃ§in satÃ½cÃ½ {self.__satici_adi}:\n"
         satislar = self.satici_satis_tutar()
         for cinsi, tutar in satislar.items():
-            s += f"{cinsi} satışı: {tutar} TL\n"
-        s += f"Toplam satış tutarı: {self.magaza_satis_tutar()} TL\n"
+            s += f"{cinsi} satÃ½Ã¾Ã½: {tutar} TL\n"
+        s += f"Toplam satÃ½Ã¾ tutarÃ½: {self.magaza_satis_tutar()} TL\n"
         s += "************************************"            
         return s
 
@@ -60,7 +60,7 @@ class Magaza:
 def main():
     magazalar = {}
     while True:
-        magaza_adi = input("Mağaza adı (press enter to exit): ")
+        magaza_adi = input("MaÃ°aza adÃ½ (press enter to exit): ")
         if not magaza_adi:
             break
         
@@ -70,24 +70,30 @@ def main():
             print("**********190601061***********")
             print("******************************\n")
             break
+            
+        if magaza_adi=="--help":
+            print("\n******************************")
+            print("*****Help for what?*****")
+            print("******************************\n")
+            break
         
-        satici_adi = input("Satıcı adı: ")
+        satici_adi = input("SatÃ½cÃ½ adÃ½: ")
         if not satici_adi:
             break
         
         while True:
-            satici_cinsi = input("Satıcının cinsi (tv, bilgisayar, beyaz eşya, diğer): ")
-            if satici_cinsi in ("tv", "bilgisayar", "beyaz eşya", "diğer"):
+            satici_cinsi = input("SatÃ½cÃ½nÃ½n cinsi (tv, bilgisayar, beyaz eÃ¾ya, diÃ°er): ")
+            if satici_cinsi in ("tv", "bilgisayar", "beyaz eÃ¾ya", "diÃ°er"):
                 break
             else:
-                print("Lütfen geçerli bir satıcı cinsi girin.")
+                print("LÃ¼tfen geÃ§erli bir satÃ½cÃ½ cinsi girin.")
         
         while True:
             try:
-                satis_tutari = float(input("Satış tutarı: "))
+                satis_tutari = float(input("SatÃ½Ã¾ tutarÃ½: "))
                 break
             except ValueError:
-                print("Lütfen geçerli bir sayı girin.")
+                print("LÃ¼tfen geÃ§erli bir sayÃ½ girin.")
         
         if magaza_adi not in magazalar:
             magazalar[magaza_adi] = Magaza(magaza_adi, satici_adi, satici_cinsi)
